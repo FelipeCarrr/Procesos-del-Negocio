@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrarse</title>
+</head>
+<body>
+    <h1>Sing Up</h1>
+    <form action="" method="post" id="myForm">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" required> <br>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" required> <br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required> <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required> <br>
+        <button type="button" onclick="sendData('api/users')">Sing Up</button>
+
+    </form>
+
+
+<script src="js/local.js"></script>
+</body>
+</html>
