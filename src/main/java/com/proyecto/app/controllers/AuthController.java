@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthController {
     @Autowired
-    private UserRepository  userRepository;
+    private UserRepository userRepository;
     private User user;
     private Message message;
     @Autowired
@@ -23,18 +23,16 @@ public class AuthController {
 
     @RequestMapping(value = "api/auth/login", method = RequestMethod.POST)
     public ResponseEntity login(@RequestBody User userReq){
-        try {
+        try{
             message = new Message();
-            user = userRepository.findByEmail(user.getEmail());
-            if (passwordEncoder.matches(userReq.getPassword(), user.getPassword())){
-                return message.viewMessage(HttpStatus.OK,"Logiin", "The user logged in");
+            user = userRepository.findByEmail(userReq.getEmail());
+            if(passwordEncoder.matches(userReq.getPassword(), user.getPassword())){
+                return message.viewMessage(HttpStatus.OK,"Login","The user logged in");
             }
             return message.viewMessage(HttpStatus.UNAUTHORIZED, "UNAUTHORIZED", "invalid username or password");
         }catch (Exception e){
-
-            return message.viewMessage(HttpStatus.INTERNAL_SERVER_ERROR,"error","An error occurred!");
+            return message.viewMessage(HttpStatus.INTERNAL_SERVER_ERROR,"error","An error occurred!"+e.toString());
 
         }
-
     }
 }

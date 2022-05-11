@@ -24,11 +24,10 @@ public class UserRepositoryTests {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @Test
     public void testCreateUser(){
         User user = new User();
-        user.setEmail("afnavarroc@ufpso.edu.co");
+        user.setEmail("afnavarro@ufpso.edu.co");
         user.setPassword(passwordEncoder.encode("123456"));
         user.setFirstName("Andres");
         user.setLastName("Navarro");

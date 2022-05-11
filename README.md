@@ -1,2 +1,2 @@
-# Procesos-del-Negocio
-proyecto de clase para la asignatura de procesos del negocio
+# procesosDelNegocio
+proyecto de clase para la asignatura de procesos de negocio

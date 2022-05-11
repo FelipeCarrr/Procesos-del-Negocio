@@ -1,0 +1,8 @@
+com\proyecto\app\config\WebSecurityConfig.class
+com\proyecto\app\controllers\AuthController.class
+com\proyecto\app\controllers\UserController.class
+com\proyecto\app\repository\UserRepository.class
+com\proyecto\app\entity\User.class
+com\proyecto\app\util\Message.class
+com\proyecto\app\UsuariosApplication.class
+com\proyecto\app\ServletInitializer.class
