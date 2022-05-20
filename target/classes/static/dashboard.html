@@ -33,10 +33,7 @@
                   <h1>Bienvenido!!!</h1>
                 </div>
                 <div class="card-body">
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong><i class="fa-solid fa-triangle-exclamation"></i></strong> You should check in on some of those fields below.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
+                  <div id ="datos"> </div>
                   <div class="p-3 mb-2 bg-secondary text-white"><h1 class="display-5"><i class="fa-solid fa-list"></i>Listado de Usuarios</h1></div>
                   
                   <a href="register.html" class="btn btn-outline-success"><i class="fa-solid fa-user-plus"></i></a>
@@ -66,5 +63,19 @@
         <script>
           listar();
         </script>
+        <!-- Modal -->
+        <div class="modal fade" id="modalUsurio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Gestion De Usuarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="contentModal">
+                
+              </div>
+            </div>
+          </div>
+        </div>
     </body>
 </html>
