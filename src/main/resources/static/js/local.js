@@ -15,8 +15,11 @@ async function login(){
         body: JSON.stringify(jsonData)
     }
     const request = await fetch("api/auth/login",settings);
-    console.log(await request.text());
-    if(request.ok){        
+    //console.log(await request.text());
+    if(request.ok){      
+        const respuesta = await request.text();
+        localStorage.token = respuesta;
+        localStorage.email = jsonData.email;  
         location.href= "dashboard.html";
     }
 }
