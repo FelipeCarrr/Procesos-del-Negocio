@@ -17,19 +17,23 @@ async function login(){
     const request = await fetch("api/auth/login",settings);
     //console.log(await request.text());
     if(request.ok){      
-        const respuesta = await request.text();
-        localStorage.token = respuesta;
+        const respuesta = await request.json();
+        
+        localStorage.token = respuesta.detail;
+
         localStorage.email = jsonData.email;  
         location.href= "dashboard.html";
     }
 }
 
 function listar(){
+    validaToken()
     var settings={
         method: 'GET',
         headers:{
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization':localStorage.token
         },
     }
     fetch("api/users",settings)
@@ -59,6 +63,7 @@ function listar(){
 
 
 async function sendData(path){
+    validaToken()
     var myForm = document.getElementById("myForm");
     var formData = new FormData(myForm);
     var jsonData = {};
@@ -69,7 +74,8 @@ async function sendData(path){
         method: 'POST',
         headers:{
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization':localStorage.token
         },
         body: JSON.stringify(jsonData)
     });
@@ -77,10 +83,12 @@ async function sendData(path){
     console.log(await request.text())
 }
 function eliminarUsuario(id){
+    validaToken()
     var settings={
         method: 'DELETE',
         headers:{
             'Accept': 'application/json',
+            'Authorization':localStorage.token
         },
     }
     fetch("api/users/"+id,settings)
@@ -92,11 +100,13 @@ function eliminarUsuario(id){
 }
 
 function traerModificarUsuario(id){
+    validaToken()
     var settings={
         method: 'GET',
         headers:{
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization':localStorage.token
         },
     }
     fetch("api/users/"+id,settings)
@@ -127,6 +137,7 @@ function traerModificarUsuario(id){
     })
 }
 async function modificarUsuario(id){
+    validaToken()
     var myForm = document.getElementById("myForm");
     var formData = new FormData(myForm);
     var jsonData = {};
@@ -137,7 +148,8 @@ async function modificarUsuario(id){
         method: 'PUT',
         headers:{
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization':localStorage.token
         },
         body: JSON.stringify(jsonData)
     });
@@ -150,11 +162,13 @@ async function modificarUsuario(id){
 }
 
 function verUsuario(id){
+    validaToken()
     var settings={
         method: 'GET',
         headers:{
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization':localStorage.token
         },
     }
     fetch("api/users/"+id,settings)
@@ -197,4 +211,13 @@ function alertas(mensaje,tipo){
     document.getElementById("datos").innerHTML=alerta;
 
 
+}
+function salir(){
+    localStorage.clear();
+    location.href = "index.html"
+}
+function validaToken(){
+    if(localStorage.token == undefined){
+        salir();
+    }
 }
