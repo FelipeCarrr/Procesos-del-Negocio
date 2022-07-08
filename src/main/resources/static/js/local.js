@@ -48,6 +48,12 @@ function listar(){
           '<td>'+usuario.firstName+'</td>'+
           '<td>'+usuario.lastName+'</td>'+
           '<td>'+usuario.email+'</td>'+
+          '<td>'+usuario.fechaNacimiento+'</td>'+
+          '<td>'+usuario.estadoCivil+'</td>'+
+          '<td>'+usuario.tienHermano+'</td>'+
+          '<td>'+usuario.estado+'</td>'+
+          '<td>'+usuario.roles+'</td>'+
+
           '<td>'+
             '<button type="button" class="btn btn-outline-danger" onclick="eliminarUsuario(\''+usuario.id+'\')"><i class="fa-solid fa-user-minus"></i></button>'+
             '<a href="#" onclick="traerModificarUsuario(\''+usuario.id+'\')" class="btn btn-outline-warning"><i class="fa-solid fa-user-pen"></i></a>'+
@@ -125,6 +131,16 @@ function traerModificarUsuario(id){
                 '<input type="text" name="lastName" class="form-control" id="lastName" required value="'+usuario.lastName+'"> <br>'+
                 '<label for="email" class="form-label">Email</label>'+
                 '<input type="email" name="email" class="form-control" id="email" required value="'+usuario.email+'"> <br>'+
+                '<label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>'+
+                '<input type="text" name="fechaNacimiento" class="form-control" id="fechaNacimiento" required value="'+usuario.fechaNacimiento+'"> <br>'+
+                '<label for="estadoCivil" class="form-label">Estado Civil</label>'+
+                '<input type="text" name="estadoCivil" class="form-control" id="estadoCivil" required value="'+usuario.estadoCivil+'"> <br>'+
+                '<label for="tienHermano" class="form-label">¿Tiene Hermanos?</label>'+
+                '<input type="text" name="tienHermano" class="form-control" id="tienHermano" required value="'+usuario.tienHermano+'"> <br>'+
+                '<label for="estado" class="form-label">Estado</label>'+
+                '<input type="text" name="estado" class="form-control" id="estado" required value="'+usuario.estado+'"> <br>'+
+                '<label for="roles" class="form-label">Roles</label>'+
+                '<input type="text" name="roles" class="form-control" id="roles" required value="'+usuario.roles+'"> <br>'+
                 '<label for="password" class="form-label">Password</label>'+
                 '<input type="password" id="password" class="form-control" name="password" required> <br>'+
                 '<button type="button" class="btn btn-outline-warning" onclick="modificarUsuario(\''+usuario.id+'\')">Modificar</button>'+
@@ -183,6 +199,11 @@ function verUsuario(id){
             '<li class="list-group-item">Nombre:'+usuario.firstName+'</li>'+
             '<li class="list-group-item">Apellido: '+usuario.lastName+'</li>'+
             '<li class="list-group-item">Email: '+usuario.email+'</li>'+
+            '<li class="list-group-item">Fecha de Nacimiento: '+usuario.fechaNacimiento+'</li>'+
+            '<li class="list-group-item">Estado Civil: '+usuario.estadoCivil+'</li>'+
+            '<li class="list-group-item">¿Tiene Hermanos?: '+usuario.tienHermano+'</li>'+
+            '<li class="list-group-item">Estado: '+usuario.estado+'</li>'+
+            '<li class="list-group-item">Roles: '+usuario.roles+'</li>'+
             '</ul>'+
             '<br>'
          }

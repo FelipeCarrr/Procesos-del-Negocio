@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <title>Registrarse</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a href=""><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png" alt="Icono" width="50" height="50"></a>
+          <a class="navbar-brand" href="#">Usuarios</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="dashboard.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="listar()">Users</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="salir()">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
@@ -21,6 +44,17 @@
                     <input type="email" name="email" class="form-control" id="email" required> <br>
                     <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" class="form-control" name="password" required> <br>
+                    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="text" name="fechaNacimiento" class="form-control" id="fechaNacimiento" required> <br>
+                    <label for="estadoCivil" class="form-label">Estado Civil</label>
+                    <input type="text" name="estadoCivil" class="form-control" id="estadoCivil" required> <br>
+                    <label for="tienHermano" class="form-label">¿Tiene Hermanos?</label>
+                    <input type="text" name="tienHermano" class="form-control" id="tienHermano" required> <br>
+                    <label for="estado" class="form-label">Estado</label>
+                    <input type="text" name="estado" class="form-control" id="estado" required> <br>
+                    <label for="roles" class="form-label">Roles</label>
+                    <input type="text" name="roles" class="form-control" id="roles" required> <br>
+                    
                     <button type="button" class="btn btn-info" onclick="sendData('api/users')">Sign Up</button>
                 </form>
             </div>

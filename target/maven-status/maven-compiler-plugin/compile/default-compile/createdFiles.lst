@@ -6,3 +6,4 @@ com\proyecto\app\entity\User.class
 com\proyecto\app\util\Message.class
 com\proyecto\app\UsuariosApplication.class
 com\proyecto\app\ServletInitializer.class
+com\proyecto\app\util\JWTUtil.class

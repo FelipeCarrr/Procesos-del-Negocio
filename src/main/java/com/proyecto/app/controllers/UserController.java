@@ -4,6 +4,11 @@ import com.proyecto.app.entity.User;
 import com.proyecto.app.repository.UserRepository;
 import com.proyecto.app.util.JWTUtil;
 import com.proyecto.app.util.Message;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -28,7 +33,15 @@ public class UserController {
         return id != null;
 
     }
-
+    @Operation(summary = "Get a User by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the User",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "User not found",
+                    content = @Content) })
     @RequestMapping(value = "api/users/{id}", method = RequestMethod.GET)
     public Optional<User> getUser(@PathVariable Long id, @RequestHeader(value = "Authorization") String token){
         if(!validarToken(token)){ return null;}
@@ -39,6 +52,7 @@ public class UserController {
         }
         return null;
     }
+
 
     @RequestMapping(value = "api/users", method = RequestMethod.POST)
     public ResponseEntity createUser(@RequestBody User user){
@@ -68,6 +82,11 @@ public class UserController {
             user.setFirstName(newUser.getFirstName());
             user.setLastName(newUser.getLastName());
             user.setEmail(newUser.getEmail());
+            user.setFechaNacimiento(newUser.getFechaNacimiento());
+            user.setEstadoCivil(newUser.getEstadoCivil());
+            user.setTienHermano(newUser.getTienHermano());
+            user.setEstado(newUser.getEstado());
+            user.setRoles(newUser.getRoles());
             user.setPassword(passwordEncoder.encode(newUser.getPassword()));
             userRepository.save(user);
 
@@ -77,6 +96,15 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Delete a User by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Delete the User",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "User not found",
+                    content = @Content) })
     @RequestMapping(value = "api/users/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteUser(@PathVariable Long id, @RequestHeader(value = "Authorization") String token){
         if(!validarToken(token)){ return null;}
